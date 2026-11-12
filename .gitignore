@@ -1,0 +1,27 @@
+# Common local/runtime noise
+node_modules/
+dist/
+build/
+coverage/
+test-results/
+playwright-report/
+*.log
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+.coverage

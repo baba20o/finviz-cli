@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finviz-cli"
+version = "0.1.0"
+description = "Finviz Elite data with a local history and runner enrichment, for people and agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Jon Adams"}]
+keywords = ["finviz", "screener", "stocks", "cli"]
+dependencies = [
+    "click>=8.1",
+    "requests>=2.31",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "tzdata; platform_system == 'Windows'",
+]
+
+[project.optional-dependencies]
+aws = ["boto3>=1.28"]
+mcp = ["mcp>=1.10"]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/baba20o/finviz-cli"
+
+[project.scripts]
+finviz = "finviz_cli.cli:main"
+finviz-mcp = "finviz_cli.mcp_server:main"
+
+[tool.setuptools.packages.find]
+include = ["finviz_cli*"]
+
+[tool.setuptools.package-data]
+finviz_cli = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
